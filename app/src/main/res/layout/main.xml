@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/picture">
+
+    <LinearLayout
+        android:layout_width="930px"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="920px"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#004bb6"
+            android:orientation="vertical"
+            android:layout_margin="5px">
+
+            <TextView
+                android:layout_width="920px"
+                android:layout_height="wrap_content"
+                android:background="#004bb6"
+                android:text="@string/title1"
+                android:textColor="@color/white"
+                android:textSize="70px"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="920px"
+                android:layout_height="wrap_content"
+                android:text="@string/title2"
+                android:textColor="@color/white"
+                android:background="#004bb6"
+                android:textSize="70px"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
+
+                    android:layout_margin="5px"
+                    android:background="#FFFFFF"
+                    android:onClick="newCircuit"
+
+                    android:scaleType="centerCrop"
+
+
+                    android:src="@drawable/main_new"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text=" Создать"
+                    android:textColor="@color/white"
+                    android:textSize="60px"
+                    android:textStyle="normal" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
+
+                    android:layout_margin="5px"
+                    android:background="#FFFFFF"
+                    android:onClick="newOpen"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/main_open"
+
+
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Открыть"
+                    android:layout_gravity="bottom|center"
+                    android:textColor="@color/white"
+                    android:textSize="60px"
+                    android:textStyle="normal" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
+                    android:onClick="newHelp"
+
+
+                    android:layout_margin="5px"
+                    android:background="#FFFFFF"
+                    android:scaleType="centerCrop"
+
+                    android:src="@drawable/main_help"
+
+
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_gravity="bottom|center"
+                    android:layout_height="wrap_content"
+                    android:text=" Помощь"
+                    android:textColor="@color/white"
+                    android:textSize="60px"
+                    android:textStyle="normal" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

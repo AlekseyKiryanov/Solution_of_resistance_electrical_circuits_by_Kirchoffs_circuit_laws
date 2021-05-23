@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:weightSum="51"
+    tools:context="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.WorkActivity"
+    android:background="#460191">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="50"
+        android:orientation="horizontal"
+        android:weightSum="62"
+        tools:context="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.WorkActivity">
+
+
+        <ScrollView
+            android:layout_width="260px"
+            android:layout_height="match_parent"
+            android:background="#460191">
+
+
+            <LinearLayout
+                android:layout_width="260px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:background="#460191"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+
+                    <ImageButton
+
+                        android:layout_width="250px"
+                        android:id="@+id/resolve"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="Solve_first"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/solve_first"
+                        android:textColor="@android:color/black"
+                        android:textSize="20px"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:id="@+id/resolvetext"
+                        android:text="Рассчитать"
+                        android:textColor="@color/white"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="Help"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/save_new"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="Сохранить"
+                        android:textColor="@color/white"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="New"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/new_new"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="Новый"
+                        android:textColor="@color/white"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="Info"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/open_new"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="Открыть"
+                        android:textColor="@color/white"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="newHelp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/help_new"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="Помощь"
+                        android:textColor="@color/white"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="60">
+
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="60">
+
+                <HorizontalScrollView
+                    android:id="@+id/HorizontalScrollView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60">
+
+
+                    <GridLayout
+                        android:id="@+id/CellsLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:background="@android:color/black"
+                        android:padding="2px"></GridLayout>
+                </HorizontalScrollView>
+
+            </ScrollView>
+        </FrameLayout>
+
+
+        <ScrollView
+            android:layout_width="260px"
+            android:layout_height="match_parent"
+            android:background="#460191">
+
+
+            <LinearLayout
+                android:layout_width="260px"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:background="#460191"
+                android:orientation="vertical"
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+                        android:id="@+id/ADell"
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="Dell"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dell"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="@string/dell"
+                        android:textColor="@color/black"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+                        android:id="@+id/ANewLength"
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="NewLength"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lenght"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="@string/length"
+                        android:textColor="@color/black"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+                        android:id="@+id/ANewResist"
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="NewResistor"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/resistor"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="OnClick" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="@string/rezistor"
+                        android:textColor="@color/black"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+                        android:id="@+id/ANewIst"
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="NewIst"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ist"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="@string/eds"
+                        android:textColor="@color/black"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160px"
+                    android:background="#460191">
+
+                    <ImageButton
+                        android:id="@+id/ANewGenerator"
+                        android:layout_width="250px"
+                        android:layout_height="160px"
+                        android:layout_margin="5px"
+                        android:background="#FFFFFF"
+                        android:onClick="NewGenerator"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/generator"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+
+                        android:text="@string/generator"
+                        android:textColor="@color/black"
+                        android:textSize="40px"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_weight="1"
+        android:background="#D1E2ED"
+        android:orientation="horizontal"
+        android:weightSum="79"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/R"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="5"
+            android:text="R= "
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/RRR"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="20"
+            android:inputType="numberDecimal"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"
+           />
+
+        <ImageButton
+            android:id="@+id/RR"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:onClick="setR"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ok"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"/>
+
+        <TextView
+            android:id="@+id/U"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="5"
+            android:text=" U= "
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/UUU"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="20"
+            android:inputType="numberDecimal"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/UU"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:onClick="setU"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ok"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"/>
+
+        <ImageButton
+            android:id="@+id/IIII"
+            android:layout_width="100px"
+            android:layout_height="150px"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:onClick="setI"
+            android:scaleType="centerCrop"
+            android:src="@drawable/i_up"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"/>
+
+        <TextView
+            android:id="@+id/I"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="5"
+            android:text=" I= "
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/III"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:layout_weight="20"
+            android:inputType="numberDecimal"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:visibility="invisible"
+            android:layout_gravity="center_vertical"
+            />
+
+
+        <ImageButton
+            android:id="@+id/II"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:onClick="setI"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ok"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

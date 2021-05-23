@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#460191"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="#460191">
+
+        <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_alignParentLeft="true"
+
+            android:layout_margin="7px"
+            android:background="#FFFFFF"
+            android:onClick="Esc"
+
+            android:scaleType="centerCrop"
+            android:src="@drawable/esc"
+
+
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="150px"
+            android:background="#084fb6"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="150px"
+                android:layout_height="57dp"
+                android:layout_alignParentLeft="true"
+
+                android:layout_margin="7px"
+                android:background="#FFFFFF"
+
+                android:scaleType="centerCrop"
+                android:src="@drawable/open"
+
+
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:text="Открыть:  "
+                android:textColor="@color/white"
+                android:textSize="60px"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="60">
+
+
+        <GridLayout
+            android:id="@+id/SavesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="#460191"
+            android:padding="2px"></GridLayout>
+
+
+    </ScrollView>
+</LinearLayout>

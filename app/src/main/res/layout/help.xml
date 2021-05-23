@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="50"
+    android:background="#D1E2ED"
+    android:orientation="vertical"
+    android:weightSum="62"
+    tools:context="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.WorkActivity">
+
+
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="60">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:id="@+id/picture"
+                android:scaleType="centerInside"
+                android:src="@drawable/a_stage_1"
+                android:layout_margin="5px"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="#D1E2ED"
+                android:layout_margin="5px"
+                android:id="@+id/infoinfoinfo"
+
+                android:text="@string/help1"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="260px"
+        android:layout_weight="1"
+
+        android:background="#D1E2ED"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="#D1E2ED">
+
+            <FrameLayout
+                android:layout_width="260px"
+                android:layout_height="260px"
+
+                android:background="#D1E2ED"
+                android:layout_alignParentLeft="true">
+
+                <ImageButton
+
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    android:layout_margin="5px"
+
+                    android:background="#FFFFFF"
+                    android:onClick="Left"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/left"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="OnClick" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+
+                    android:text="Назад"
+                    android:textColor="@color/white"
+                    android:textSize="40px"
+                    android:textStyle="normal" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="260px"
+            android:layout_height="260px"
+            android:background="#D1E2ED"
+            >
+
+            <ImageButton
+
+                android:layout_width="250px"
+                android:layout_height="250px"
+                android:layout_margin="5px"
+                android:background="#FFFFFF"
+                android:onClick="Right"
+                android:scaleType="centerCrop"
+                android:src="@drawable/right"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+
+                android:text="Далее"
+                android:textColor="@color/white"
+                android:textSize="40px"
+                android:textStyle="normal" />
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
+
+
+

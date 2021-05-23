@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150px"
+
+
+    android:backgroundTint="@color/white"
+    android:text="3323"
+    android:layout_margin="5px"
+    android:background="#FFFFFF"
+    android:scaleType="centerCrop"
+
+
+    android:textColor="@android:color/black"
+    android:textSize="20sp"
+    android:textStyle="bold"
+
+
+
+
+    />
+    <!--android:scaleType="centerCrop"
+                        android:layout_width="250px"
+                    android:layout_height="150px"
+                    android:layout_margin="0dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/solve_first"
+                    android:onClick="Solve_first"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="OnClick"
+    -->

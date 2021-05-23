@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:shrinkColumns="2"
+    android:stretchColumns="2" >
+
+
+
+
+
+    <TableRow
+        android:id="@+id/height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/the_height"
+            android:layout_width="250px"
+            android:layout_height="match_parent"
+            android:text="@string/height"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"></TextView>
+
+        <EditText
+            android:layout_width="250px"
+            android:id="@+id/set_height"
+            android:gravity="center_horizontal"
+            android:text="15"
+            android:inputType="numberDecimal">
+        </EditText>
+
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/width"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/the_width"
+            android:text="@string/width"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black">
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/set_width"
+            android:gravity="center_horizontal"
+            android:inputType="numberDecimal"
+            android:text="15" >
+        </EditText>
+
+
+    </TableRow>
+
+
+
+</TableLayout>

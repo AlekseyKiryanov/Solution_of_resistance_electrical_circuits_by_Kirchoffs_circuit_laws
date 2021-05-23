@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="2"
+    android:versionName="alpha 0.1.2"
+    package="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+        <activity android:name="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.WorkActivity">
+
+        </activity>
+        <activity android:name="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.SavesActivity">
+
+        </activity>
+        <activity android:name="ru.kyrianov_aleksey.electrical_circuit_by_kirchhoff.HelpActivity">
+
+        </activity>
+    </application>
+
+</manifest>

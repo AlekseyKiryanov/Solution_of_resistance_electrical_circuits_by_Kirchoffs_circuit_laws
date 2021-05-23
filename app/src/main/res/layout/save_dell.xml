@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150px"
+    android:layout_height="150px"
+    android:layout_margin="5px"
+
+    android:background="#FFFFFF"
+    android:scaleType="centerCrop"
+
+    android:src="@drawable/save_dell"
+
+
+    android:textColor="@android:color/black"
+    android:textSize="20sp"
+    android:textStyle="bold"
+
+
+    />
