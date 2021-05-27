@@ -102,24 +102,19 @@ public class WorkActivity extends Activity implements OnClickListener {
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.set_size, null);
 
-        //Создаем AlertDialog
         AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(context);
 
-        //Настраиваем prompt.xml для нашего AlertDialog:
         mDialogBuilder.setView(promptsView);
 
-        //Настраиваем отображение поля для ввода текста в открытом диалоге:
         final EditText height_EditText = (EditText) promptsView.findViewById(R.id.set_height);
         final EditText width_EditText = (EditText) promptsView.findViewById(R.id.set_width);
 
-        //Настраиваем сообщение в диалоговом окне:
         mDialogBuilder
                 .setCancelable(false)
                 .setTitle("Укажите размеры схемы")
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                //Вводим текст и отображаем в строке ввода на основном экране:
                                 HEIGHT = Integer.parseInt((String) height_EditText.getText().toString());
                                 Log.i("TAG", (String) height_EditText.getText().toString());
                                 WIDTH = Integer.parseInt((String) width_EditText.getText().toString());
@@ -792,8 +787,11 @@ public class WorkActivity extends Activity implements OnClickListener {
                 Rimagebutton.setVisibility(View.VISIBLE);
 
                 RtextView.setText(" R =");
-                if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
+                    ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
+                } else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
                     ReditView.setText(String.format("%.0f", electricalcircuit.getRElement(y_info, x_info)));
@@ -810,16 +808,22 @@ public class WorkActivity extends Activity implements OnClickListener {
 
                 RtextView.setText(" r =");
                 UtextView.setText(" E =");
-                if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
+                    ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
+                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
                     ReditView.setText(String.format("%.0f", electricalcircuit.getRElement(y_info, x_info)));
                 } else {
                     ReditView.setText(String.format("%.2e", electricalcircuit.getRElement(y_info, x_info)));
                 }
-                if ((electricalcircuit.getEElement(y_info, x_info) <= 1000) && (electricalcircuit.getEElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getEElement(y_info, x_info) < 1) && (electricalcircuit.getEElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
+                    UeditView.setText(decimalFormat.format(electricalcircuit.getEElement(y_info, x_info)));
+                }else if ((electricalcircuit.getEElement(y_info, x_info) <= 1000) && (electricalcircuit.getEElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     UeditView.setText(decimalFormat.format(electricalcircuit.getEElement(y_info, x_info)));
                 } else if (electricalcircuit.getEElement(y_info, x_info) == 0) {
                     UeditView.setText(String.format("%.0f", electricalcircuit.getEElement(y_info, x_info)));
@@ -837,18 +841,24 @@ public class WorkActivity extends Activity implements OnClickListener {
 
                 RtextView.setText(" r =");
                 ItextView.setText(" J =");
-                if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
+                    ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
+                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
                     ReditView.setText(String.format("%.0f", electricalcircuit.getRElement(y_info, x_info)));
                 } else {
                     ReditView.setText(String.format("%.2e", electricalcircuit.getRElement(y_info, x_info)));
                 }
-                if ((electricalcircuit.getJElement(y_info, x_info) <= 1000) && (electricalcircuit.getJElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getJElement(y_info, x_info) < 1) && (electricalcircuit.getJElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     IeditView.setText(decimalFormat.format(electricalcircuit.getJElement(y_info, x_info)));
-                } else if (electricalcircuit.getJElement(y_info, x_info) == 0) {
+                } else if ((electricalcircuit.getJElement(y_info, x_info) <= 1000) && (electricalcircuit.getJElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    IeditView.setText(decimalFormat.format(electricalcircuit.getJElement(y_info, x_info)));
+                }else if (electricalcircuit.getJElement(y_info, x_info) == 0) {
                     IeditView.setText(String.format("%.0f", electricalcircuit.getJElement(y_info, x_info)));
                 } else {
                     IeditView.setText(String.format("%.2e", electricalcircuit.getJElement(y_info, x_info)));
@@ -884,26 +894,35 @@ public class WorkActivity extends Activity implements OnClickListener {
                 IeditView.setEnabled(false);
 
 
-                if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
+                if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     ReditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getRElement(y_info, x_info))));
+                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
                     ReditView.setText(String.format("%.0f", electricalcircuit.getRElement(y_info, x_info)));
                 } else {
                     ReditView.setText(String.format("%.2e", electricalcircuit.getRElement(y_info, x_info)));
                 }
 
-                if ((Math.abs(electricalcircuit.getUElement(y_info, x_info)) <= 1000) && (Math.abs(electricalcircuit.getUElement(y_info, x_info)) >= 0.001)) {
+                if ((Math.abs(electricalcircuit.getUElement(y_info, x_info)) < 1) && (Math.abs(electricalcircuit.getUElement(y_info, x_info)) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     UeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getUElement(y_info, x_info))));
-                } else if (Math.abs(electricalcircuit.getUElement(y_info, x_info)) == 0) {
+                } else if ((Math.abs(electricalcircuit.getUElement(y_info, x_info)) <= 1000) && Math.abs(electricalcircuit.getUElement(y_info, x_info)) >= 1) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    UeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getUElement(y_info, x_info))));
+                }else if (Math.abs(electricalcircuit.getUElement(y_info, x_info)) == 0) {
                     UeditView.setText(String.format("%.0f", Math.abs(electricalcircuit.getUElement(y_info, x_info))));
                 } else {
                     UeditView.setText(String.format("%.2e", Math.abs(electricalcircuit.getUElement(y_info, x_info))));
                 }
 
-                if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) <= 1000) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 0.001)) {
+                if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) < 1) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
+                    IeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getIElement(y_info, x_info))));
+                }else if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) <= 1000) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 1)) {
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     IeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getIElement(y_info, x_info))));
                 } else if (Math.abs(electricalcircuit.getIElement(y_info, x_info)) == 0) {
                     IeditView.setText(String.format("%.0f", Math.abs(electricalcircuit.getIElement(y_info, x_info))));

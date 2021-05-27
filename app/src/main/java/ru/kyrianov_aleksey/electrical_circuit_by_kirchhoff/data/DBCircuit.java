@@ -96,11 +96,11 @@ public class DBCircuit {
                         TYPE = 'J';
                         break;
                 }
-                double i = mCursor.getInt(2);
-                double r = mCursor.getInt(3);
-                double u = mCursor.getInt(4);
-                double j = mCursor.getInt(5);
-                double e = mCursor.getInt(6);
+                double i = mCursor.getDouble(2);
+                double r = mCursor.getDouble(3);
+                double u = mCursor.getDouble(4);
+                double j = mCursor.getDouble(5);
+                double e = mCursor.getDouble(6);
                 int picture = mCursor.getInt(7);
                 int up = mCursor.getInt(8);
                 int down = mCursor.getInt(9);
