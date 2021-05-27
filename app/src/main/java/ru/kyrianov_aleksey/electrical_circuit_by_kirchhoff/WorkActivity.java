@@ -911,6 +911,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                     UeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getUElement(y_info, x_info))));
                 } else if ((Math.abs(electricalcircuit.getUElement(y_info, x_info)) <= 1000) && Math.abs(electricalcircuit.getUElement(y_info, x_info)) >= 1) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
                     UeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getUElement(y_info, x_info))));
                 }else if (Math.abs(electricalcircuit.getUElement(y_info, x_info)) == 0) {
                     UeditView.setText(String.format("%.0f", Math.abs(electricalcircuit.getUElement(y_info, x_info))));
