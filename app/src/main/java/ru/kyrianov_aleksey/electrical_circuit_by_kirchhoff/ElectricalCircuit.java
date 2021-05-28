@@ -37,16 +37,16 @@ public class ElectricalCircuit {
     private double[] J_matrix;
     private int real_length;
 
-    public void setElement(ElectricElement e, int y, int x){
-        real_matrix[y][x]=e;
+    public void setElement(ElectricElement e, int y, int x) {
+        real_matrix[y][x] = e;
     }
 
     public void solve() {
-       // for (int i=0; i<uzels.size(); i++){
-       //     real_matrix[uzels.get(i).getY()][uzels.get(i).getX()].setPrinted(false);
-       // }
-        for (int i=0; i<H; i++){
-            for (int j=0; j<W; j++){
+        // for (int i=0; i<uzels.size(); i++){
+        //     real_matrix[uzels.get(i).getY()][uzels.get(i).getX()].setPrinted(false);
+        // }
+        for (int i = 0; i < H; i++) {
+            for (int j = 0; j < W; j++) {
                 real_matrix[i][j].setPrinted(false);
             }
         }
@@ -56,23 +56,23 @@ public class ElectricalCircuit {
         makeBigMatrixIncedenciy();
         //printLogArrayA(big_matrix_incedenciy);
         makeMatrixIncedenciy();
-        Log.i(TAG,"Big_matrix_Icedenciy");
+        Log.i(TAG, "Big_matrix_Icedenciy");
         printLogArrayA(big_matrix_incedenciy);
-        Log.i(TAG,"Matrix_Icedenciy");
+        Log.i(TAG, "Matrix_Icedenciy");
         printLogArrayB(matrix_incedenciy);
         makeEMatrix();
-        Log.i(TAG,"E_vector");
+        Log.i(TAG, "E_vector");
         printLogArrayC(E_matrix);
         makeRMatrix();
-        Log.i(TAG,"R_vector");
+        Log.i(TAG, "R_vector");
         printLogArrayC(R_matrix);
         makeJMatrix();
-        Log.i(TAG,"J_vector");
+        Log.i(TAG, "J_vector");
         printLogArrayC(J_matrix);
         makeMatrixConductivity();
-        Log.i(TAG,"Conductivity");
+        Log.i(TAG, "Conductivity");
         printLogArrayB(matrix_conductivity);
-        Log.i(TAG,"Solve");
+        Log.i(TAG, "Solve");
         double[][] T;
         T = matrix.matrixTransposition(matrix_incedenciy);
         printLogArrayB(T);
@@ -89,7 +89,7 @@ public class ElectricalCircuit {
         B = matrix.matrixAndVectorMultiplication(matrix_incedenciy, matrix.vectorSubtraction(J_matrix, matrix.matrixAndVectorMultiplication(matrix_conductivity, E_matrix)));
         printLogArrayC(B);
 
-        Log.i(TAG,"Gauss");
+        Log.i(TAG, "Gauss");
         double[] V;
         V = abc.solve(matrix.matrixAndVectorCombinationForGaus(D, B));
         printLogArrayC(V);
@@ -147,15 +147,6 @@ public class ElectricalCircuit {
     }
 
 
-/*    private void makeMatrixIncedenciy() {
-        matrix_incedenciy = new double[][]{
-                {-1, 1, 0, 0, 1, 0, 0},
-                {0, -1, 1, 0, 0, 0, -1},
-                {0, 0, 0, 1, -1, 0, 1},
-                {1, 0, 0, 0, 0, -1, 0}
-        };
-    }*/
-
     private void printLogArrayA(int[][] A) {
         String s = "";
         for (int a = 0; a < A.length; a++) {
@@ -199,9 +190,6 @@ public class ElectricalCircuit {
         }
     }
 
-  /*  private void makeRMatrix() {
-        R_matrix = new double[]{140, 70, 70, 70, 0.0001, 0.0001, 1000000};
-    }*/
 
     private void makeEMatrix() {
         E_matrix = new double[elements.size()];
@@ -209,9 +197,6 @@ public class ElectricalCircuit {
             E_matrix[b] = getEElement(elements.get(b).getY(), elements.get(b).getX());
         }
     }
- /*   private void makeEMatrix() {
-        E_matrix = new double[]{0, 0, 0, 0, 140, 170, 0};
-    } */
 
 
     private void makeJMatrix() {
@@ -221,15 +206,11 @@ public class ElectricalCircuit {
         }
     }
 
- /*   private void makeJMatrix() {
-        J_matrix = new double[]{0, 0, 0, 0, 0, 0, -2};
-
-    } */
 
     private void makeMatrixConductivity() {
-        matrix_conductivity = new double[elements.size()][elements.size()];/////////////////////////////////////////
-        for (int a = 0; a < elements.size(); a++) {              //////////////////////////////////////////////////////
-            for (int b = 0; b < elements.size(); b++) {//////////////////////////////////////////////////
+        matrix_conductivity = new double[elements.size()][elements.size()];
+        for (int a = 0; a < elements.size(); a++) {
+            for (int b = 0; b < elements.size(); b++) {
                 matrix_conductivity[a][b] = 0;
             }
         }
@@ -241,41 +222,41 @@ public class ElectricalCircuit {
 
     private void printInMatrixIncedenciy(int y, int x, int i) {
         setPrintedElement(true, y, x);
-        if ((y-1>=0)&&((giveTypeElement(y - 1, x) == 'R') || (giveTypeElement(y - 1, x) == 'J') || (giveTypeElement(y - 1, x) == 'E'))) {
+        if ((y - 1 >= 0) && ((giveTypeElement(y - 1, x) == 'R') || (giveTypeElement(y - 1, x) == 'J') || (giveTypeElement(y - 1, x) == 'E'))) {
             if (isDownElement(y - 1, x)) {
                 big_matrix_incedenciy[i][getNumberElement(y - 1, x)] = -1;
             } else {
                 big_matrix_incedenciy[i][getNumberElement(y - 1, x)] = 1;
             }
-        } else if((y-1>=0)&& ((giveTypeElement(y - 1, x) == 'X') && (isPrintedElement(y - 1, x)) == false)) {
+        } else if ((y - 1 >= 0) && ((giveTypeElement(y - 1, x) == 'X') && (isPrintedElement(y - 1, x)) == false)) {
             printInMatrixIncedenciy(y - 1, x, i);
         }
 
-        if ((x-1>=0)&&((giveTypeElement(y, x - 1) == 'R') || (giveTypeElement(y, x - 1) == 'J') || (giveTypeElement(y, x - 1) == 'E'))) {
+        if ((x - 1 >= 0) && ((giveTypeElement(y, x - 1) == 'R') || (giveTypeElement(y, x - 1) == 'J') || (giveTypeElement(y, x - 1) == 'E'))) {
             if (isRightElement(y, x - 1)) {
                 big_matrix_incedenciy[i][getNumberElement(y, x - 1)] = -1;
             } else {
                 big_matrix_incedenciy[i][getNumberElement(y, x - 1)] = 1;
             }
-        } else if ((x-1>=0)&&((giveTypeElement(y, x - 1) == 'X') && (isPrintedElement(y, x - 1)) == false)) {
+        } else if ((x - 1 >= 0) && ((giveTypeElement(y, x - 1) == 'X') && (isPrintedElement(y, x - 1)) == false)) {
             printInMatrixIncedenciy(y, x - 1, i);
         }
-        if ((y+1<H)&&((giveTypeElement(y + 1, x) == 'R') || (giveTypeElement(y + 1, x) == 'J') || (giveTypeElement(y + 1, x) == 'E'))) {
+        if ((y + 1 < H) && ((giveTypeElement(y + 1, x) == 'R') || (giveTypeElement(y + 1, x) == 'J') || (giveTypeElement(y + 1, x) == 'E'))) {
             if (isUpElement(y + 1, x)) {
                 big_matrix_incedenciy[i][getNumberElement(y + 1, x)] = -1;
             } else {
                 big_matrix_incedenciy[i][getNumberElement(y + 1, x)] = 1;
             }
-        } else if ((y+1<H)&&((giveTypeElement(y + 1, x) == 'X') && (isPrintedElement(y + 1, x)) == false)) {
+        } else if ((y + 1 < H) && ((giveTypeElement(y + 1, x) == 'X') && (isPrintedElement(y + 1, x)) == false)) {
             printInMatrixIncedenciy(y + 1, x, i);
         }
-        if ((x+1<W)&&((giveTypeElement(y, x + 1) == 'R') || (giveTypeElement(y, x + 1) == 'J') || (giveTypeElement(y, x + 1) == 'E'))) {
+        if ((x + 1 < W) && ((giveTypeElement(y, x + 1) == 'R') || (giveTypeElement(y, x + 1) == 'J') || (giveTypeElement(y, x + 1) == 'E'))) {
             if (isLeftElement(y, x + 1)) {
                 big_matrix_incedenciy[i][getNumberElement(y, x + 1)] = -1;
             } else {
                 big_matrix_incedenciy[i][getNumberElement(y, x + 1)] = 1;
             }
-        } else if ((x+1<W)&&((giveTypeElement(y, x + 1) == 'X') && (isPrintedElement(y, x + 1)) == false)) {
+        } else if ((x + 1 < W) && ((giveTypeElement(y, x + 1) == 'X') && (isPrintedElement(y, x + 1)) == false)) {
             printInMatrixIncedenciy(y, x + 1, i);
         }
     }

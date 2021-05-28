@@ -123,10 +123,8 @@ public class WorkActivity extends Activity implements OnClickListener {
                             }
                         });
 
-        //Создаем AlertDialog:
         AlertDialog alertDialog = mDialogBuilder.create();
 
-        //и отображаем его:
         alertDialog.show();
 
     }
@@ -209,7 +207,6 @@ public class WorkActivity extends Activity implements OnClickListener {
                                 electricalcircuit.setUpElement(false, c, tappedX);
                             }
                             PaintElementOK(c, tappedX);
-                            //electricalcircuit.setNumberElement(number_new_element, c, tappedX);
                             electricalcircuit.addElement(c, tappedX);
 
 
@@ -278,8 +275,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                                 electricalcircuit.setLeftElement(false, tappedY, c);
                             }
                             PaintElementOK(tappedY, c);
-                            // electricalcircuit.setNumberElement(number_new_element, tappedY, c);
-                            number_new_element++;
+                             number_new_element++;
                             electricalcircuit.addElement(tappedY, c);
 
                             electricalcircuit.resetNumbersElement();
@@ -1006,7 +1002,7 @@ public class WorkActivity extends Activity implements OnClickListener {
     }
 
     public void Solve_first(View view) {
-
+        PaintButtonOK();
         if (solved == 0) {
             try {
                 electricalcircuit.solve();
@@ -1038,6 +1034,7 @@ public class WorkActivity extends Activity implements OnClickListener {
     }
 
     public void newHelp(View v) {
+        PaintButtonOK();
         Intent intent = new Intent(WorkActivity.this, HelpActivity.class);
         startActivity(intent);
     }
@@ -1050,6 +1047,7 @@ public class WorkActivity extends Activity implements OnClickListener {
 
 
     public void Dell(View view) {
+        PaintButtonOK();
         if (solved == 0) {
             if (stage_new_element != 3) {
                 stage_new_element = 3;
@@ -1071,6 +1069,7 @@ public class WorkActivity extends Activity implements OnClickListener {
     }
 
     public void New(View view) {
+        PaintButtonOK();
         Intent intent = new Intent(WorkActivity.this, WorkActivity.class);
         startActivity(intent);
         //recreate();

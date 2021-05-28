@@ -472,7 +472,7 @@
             android:layout_height="150px"
             android:layout_margin="0dp"
             android:layout_weight="1"
-            android:background="#FFFFFF"
+            android:background="#00FFFFFF"
             android:onClick="setU"
             android:scaleType="centerCrop"
             android:src="@drawable/ok"
@@ -484,7 +484,7 @@
 
         <ImageButton
             android:id="@+id/IIII"
-            android:layout_width="100px"
+            android:layout_width="150px"
             android:layout_height="150px"
             android:layout_margin="0dp"
             android:layout_weight="1"
@@ -529,7 +529,7 @@
             android:layout_height="150px"
             android:layout_margin="0dp"
             android:layout_weight="1"
-            android:background="#FFFFFF"
+            android:background="#00FFFFFF"
             android:onClick="setI"
             android:scaleType="centerCrop"
             android:src="@drawable/ok"

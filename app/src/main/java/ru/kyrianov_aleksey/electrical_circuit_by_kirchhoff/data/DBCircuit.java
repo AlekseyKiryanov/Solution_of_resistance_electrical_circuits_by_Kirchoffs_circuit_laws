@@ -25,7 +25,7 @@ public class DBCircuit {
         mDataBase = mOpenHelper.getWritableDatabase();
     }
 
-    //public ElectricElement(char type, double i, double r, double u, double j, double e, int picture, boolean up, boolean down, boolean right, boolean left)
+
 
     public void AddCircuit(String name, int height, int width, int solved, String visibly_name, int liked) {
 
@@ -154,7 +154,7 @@ public class DBCircuit {
             db.execSQL(query);
         }
 
-        //public Save(String name, int height, int width, int solved, String visibly_name, int liked)
+
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

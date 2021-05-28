@@ -56,8 +56,7 @@ public class SavesActivity extends Activity implements View.OnClickListener {
 
         }
 
-        //Toast.makeText(this, saves.get(tappedN), Toast.LENGTH_SHORT).show();
-        //onBackPressed();
+
 
 
         if (tappedN % 10 == 1) {
@@ -79,7 +78,6 @@ public class SavesActivity extends Activity implements View.OnClickListener {
             tappedN = (int) tappedN / 10;
             DBConnector.DellCircuit(saves.get(tappedN).getName());
             recreate();
-            Log.i("TAG", "Здравствуйте, Вам БЭН");
         }
     }
 
@@ -96,7 +94,6 @@ public class SavesActivity extends Activity implements View.OnClickListener {
         buttonsLayout.setColumnCount(HEIGHT);
         buttonsLayout.setColumnCount(2);
         for (int i = 0; i < HEIGHT; i++) {
-            //for (int j = 0; j < WIDTH; j++) {
             LayoutInflater inflater = (LayoutInflater) getApplicationContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
