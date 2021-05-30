@@ -399,8 +399,16 @@
         android:layout_weight="1"
         android:background="#D1E2ED"
         android:orientation="horizontal"
-        android:weightSum="79"
+        android:weightSum="80"
         android:layout_gravity="bottom">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="visible"
+            android:layout_gravity="center_vertical"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/R"

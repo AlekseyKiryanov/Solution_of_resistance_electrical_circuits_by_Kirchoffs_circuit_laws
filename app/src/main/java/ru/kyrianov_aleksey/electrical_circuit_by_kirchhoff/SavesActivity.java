@@ -71,13 +71,16 @@ public class SavesActivity extends Activity implements View.OnClickListener {
             intent.putExtra("height", saves.get(tappedN).getHeight());
             intent.putExtra("width", saves.get(tappedN).getWidth());
             intent.putExtra("solve", saves.get(tappedN).getSolved());
+            intent.putExtra("start", saves.get(tappedN).getStart());
             intent.putExtra("need_opening", true);
             startActivity(intent);
 
         } else {
             tappedN = (int) tappedN / 10;
-            DBConnector.DellCircuit(saves.get(tappedN).getName());
-            recreate();
+            DBConnector.DellCircuit(saves.get(tappedN).getName(),saves.get(tappedN).getStart(),saves.get(tappedN).getWidth()*saves.get(tappedN).getHeight());
+            buttons[tappedN].setVisibility(View.GONE);
+            buttons_dell[tappedN].setVisibility(View.GONE);
+            
         }
     }
 
@@ -107,7 +110,7 @@ public class SavesActivity extends Activity implements View.OnClickListener {
             buttonsLayout.addView(buttons[i]);
             buttons[i].setOnClickListener(this);
             buttons_dell[i].setOnClickListener(this);
-            buttons[i].setText(saves.get(i).getVisibly_name());
+            buttons[i].setText(saves.get(i).getName());
         }
     }
 

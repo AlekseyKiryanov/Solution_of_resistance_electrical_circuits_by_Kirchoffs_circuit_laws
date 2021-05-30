@@ -9,19 +9,18 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -47,6 +46,8 @@ public class WorkActivity extends Activity implements OnClickListener {
     private ElectricalCircuit electricalcircuit;
     private int number_new_element = 0;
     private String last_save = "";
+    public ProgressBar check;
+
     SimpleCursorAdapter scAdapter;
     Cursor cursor;
 
@@ -57,6 +58,7 @@ public class WorkActivity extends Activity implements OnClickListener {
 
 
         setContentView(R.layout.cells);
+        check = findViewById(R.id.progressBar);
         DBConnector = new DBCircuit(this);
 
 
@@ -65,6 +67,7 @@ public class WorkActivity extends Activity implements OnClickListener {
         int new_height = 0;
         int new_width = 0;
         int new_solve = 0;
+        int new_start = 0;
         try {
             Log.i("TAG", "f");
             table_name = getIntent().getExtras().getString("name_table");
@@ -72,6 +75,7 @@ public class WorkActivity extends Activity implements OnClickListener {
             new_height = getIntent().getExtras().getInt("height");
             new_width = getIntent().getExtras().getInt("width");
             new_solve = getIntent().getExtras().getInt("solve");
+            new_start = getIntent().getExtras().getInt("start");
         } catch (Exception e) {
             Log.i("TAG", "h");
         }
@@ -91,9 +95,15 @@ public class WorkActivity extends Activity implements OnClickListener {
             electricalcircuit = new ElectricalCircuit(HEIGHT, WIDTH);
             makeCells();
 
-            Opening(table_name, HEIGHT, WIDTH);
+            try {
+                Opening(table_name, HEIGHT, WIDTH, new_start);
+                check.setVisibility(View.INVISIBLE);
+            } catch (Exception e) {
+                Toast toast = Toast.makeText(this, "Не удалось открыть схему", Toast.LENGTH_SHORT);
+            }
         } else {
             setSize();
+            check.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -275,7 +285,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                                 electricalcircuit.setLeftElement(false, tappedY, c);
                             }
                             PaintElementOK(tappedY, c);
-                             number_new_element++;
+                            number_new_element++;
                             electricalcircuit.addElement(tappedY, c);
 
                             electricalcircuit.resetNumbersElement();
@@ -530,10 +540,10 @@ public class WorkActivity extends Activity implements OnClickListener {
     }
 
     public void
-    Opening(String name_table, int height, int width) {
+    Opening(String name_table, int height, int width, int start) throws Exception {
         Log.i("i", "d");
         ArrayList<ElectricElement> elements = new ArrayList<ElectricElement>();
-        elements = DBConnector.getElements(name_table);
+        elements = DBConnector.getElements(start, height * width);
         Log.i("i", String.valueOf(elements.size()));
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -807,7 +817,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
-                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                } else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
@@ -818,7 +828,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 if ((electricalcircuit.getEElement(y_info, x_info) < 1) && (electricalcircuit.getEElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     UeditView.setText(decimalFormat.format(electricalcircuit.getEElement(y_info, x_info)));
-                }else if ((electricalcircuit.getEElement(y_info, x_info) <= 1000) && (electricalcircuit.getEElement(y_info, x_info) >= 1)) {
+                } else if ((electricalcircuit.getEElement(y_info, x_info) <= 1000) && (electricalcircuit.getEElement(y_info, x_info) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     UeditView.setText(decimalFormat.format(electricalcircuit.getEElement(y_info, x_info)));
                 } else if (electricalcircuit.getEElement(y_info, x_info) == 0) {
@@ -840,7 +850,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
-                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                } else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
@@ -854,7 +864,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 } else if ((electricalcircuit.getJElement(y_info, x_info) <= 1000) && (electricalcircuit.getJElement(y_info, x_info) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     IeditView.setText(decimalFormat.format(electricalcircuit.getJElement(y_info, x_info)));
-                }else if (electricalcircuit.getJElement(y_info, x_info) == 0) {
+                } else if (electricalcircuit.getJElement(y_info, x_info) == 0) {
                     IeditView.setText(String.format("%.0f", electricalcircuit.getJElement(y_info, x_info)));
                 } else {
                     IeditView.setText(String.format("%.2e", electricalcircuit.getJElement(y_info, x_info)));
@@ -893,7 +903,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 if ((electricalcircuit.getRElement(y_info, x_info) < 1) && (electricalcircuit.getRElement(y_info, x_info) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     ReditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getRElement(y_info, x_info))));
-                }else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
+                } else if ((electricalcircuit.getRElement(y_info, x_info) <= 1000) && (electricalcircuit.getRElement(y_info, x_info) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     ReditView.setText(decimalFormat.format(electricalcircuit.getRElement(y_info, x_info)));
                 } else if (electricalcircuit.getRElement(y_info, x_info) == 0) {
@@ -909,7 +919,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
                     UeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getUElement(y_info, x_info))));
-                }else if (Math.abs(electricalcircuit.getUElement(y_info, x_info)) == 0) {
+                } else if (Math.abs(electricalcircuit.getUElement(y_info, x_info)) == 0) {
                     UeditView.setText(String.format("%.0f", Math.abs(electricalcircuit.getUElement(y_info, x_info))));
                 } else {
                     UeditView.setText(String.format("%.2e", Math.abs(electricalcircuit.getUElement(y_info, x_info))));
@@ -918,7 +928,7 @@ public class WorkActivity extends Activity implements OnClickListener {
                 if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) < 1) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 0.001)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.###");
                     IeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getIElement(y_info, x_info))));
-                }else if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) <= 1000) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 1)) {
+                } else if ((Math.abs(electricalcircuit.getIElement(y_info, x_info)) <= 1000) && (Math.abs(electricalcircuit.getIElement(y_info, x_info)) >= 1)) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
                     IeditView.setText(decimalFormat.format(Math.abs(electricalcircuit.getIElement(y_info, x_info))));
                 } else if (Math.abs(electricalcircuit.getIElement(y_info, x_info)) == 0) {
@@ -1005,7 +1015,7 @@ public class WorkActivity extends Activity implements OnClickListener {
         PaintButtonOK();
         if (solved == 0) {
             try {
-                electricalcircuit.solve();
+                StartSolve();
                 solved = 1;
                 breakInfo();
                 ImageButton solve = (ImageButton) findViewById(R.id.resolve);
@@ -1026,10 +1036,61 @@ public class WorkActivity extends Activity implements OnClickListener {
             solvek.setText("Рассчитать");
         }
     }
+    public class solveSolve extends Thread {
+        public void run() {
+            electricalcircuit.solve();
+        }
+    }
+
+
+    public void StartSolve() {
+        check.setVisibility(View.VISIBLE);
+        solveSolve saver = new solveSolve();
+        saver.start();
+        try {
+            saver.join();
+
+            check.setVisibility(View.INVISIBLE);
+        } catch (InterruptedException e) {
+
+            check.setVisibility(View.INVISIBLE);
+        }
+
+
+
+    }
 
     public void Help(View view) {
+        check.setVisibility(ProgressBar.VISIBLE);
+        PaintButtonOK();
         Log.i("TAG", "1");
-        Save();
+        StartSave();
+        check.setVisibility(ProgressBar.INVISIBLE);
+    }
+
+
+    public class solveSave extends Thread {
+        public void run() {
+            Save();
+        }
+    }
+
+
+    public void StartSave() {
+        solveSave saver = new solveSave();
+        saver.start();
+        try {
+            saver.join();
+            Toast toast = Toast.makeText(this, "Электрическая схема сохранена", Toast.LENGTH_SHORT);
+            toast.show();
+            check.setVisibility(View.INVISIBLE);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Toast toast = Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT);
+            check.setVisibility(View.INVISIBLE);
+        }
+
+
 
     }
 
@@ -1047,6 +1108,7 @@ public class WorkActivity extends Activity implements OnClickListener {
 
 
     public void Dell(View view) {
+
         PaintButtonOK();
         if (solved == 0) {
             if (stage_new_element != 3) {
@@ -1094,16 +1156,16 @@ public class WorkActivity extends Activity implements OnClickListener {
 
     public void Save() {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM_dd_yyyy_hh_mm_ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
         String dateFormat = simpleDateFormat.format(calendar.getTime());
         if (dateFormat.equals(last_save)) {
             last_save = dateFormat;
-            Toast.makeText(this, R.string.err4, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, R.string.err4, Toast.LENGTH_SHORT).show();
 
         } else {
             last_save = dateFormat;
 
-            DBConnector.AddCircuit(dateFormat, HEIGHT, WIDTH, solved, dateFormat, 0);
+            DBConnector.AddCircuit(dateFormat, HEIGHT, WIDTH, solved, 0);
 
             for (int i = 0; i < HEIGHT; i++) {
                 for (int j = 0; j < WIDTH; j++) {
@@ -1131,10 +1193,10 @@ public class WorkActivity extends Activity implements OnClickListener {
                     int LEFT = electricalcircuit.isLeftElement(i, j) ? 1 : 0;
                     int RIGHT = electricalcircuit.isRightElement(i, j) ? 1 : 0;
 
-                    DBConnector.AddElement(dateFormat, TYPE, electricalcircuit.getIElement(i, j), electricalcircuit.getRElement(i, j), electricalcircuit.getUElement(i, j), electricalcircuit.getJElement(i, j), electricalcircuit.getEElement(i, j), electricalcircuit.getPictureElement(i, j), UP, DOWN, RIGHT, LEFT);
+                    DBConnector.AddElement(TYPE, electricalcircuit.getIElement(i, j), electricalcircuit.getRElement(i, j), electricalcircuit.getUElement(i, j), electricalcircuit.getJElement(i, j), electricalcircuit.getEElement(i, j), electricalcircuit.getPictureElement(i, j), UP, DOWN, RIGHT, LEFT);
                 }
             }
-
+            //
         }
 
 
