@@ -205,7 +205,9 @@ public class WorkActivity extends Activity implements OnClickListener {
                         }
 
 
-                        electricalcircuit.setTypeElement(TypeNewElement, c, tappedX);
+                        if (TypeNewElement != 'X') {
+                            electricalcircuit.setTypeElement(TypeNewElement, c, tappedX);
+                        }
 
 
                         if (TypeNewElement != 'X') {
@@ -274,7 +276,9 @@ public class WorkActivity extends Activity implements OnClickListener {
                         }
 
 
-                        electricalcircuit.setTypeElement(TypeNewElement, tappedY, c);
+                        if (TypeNewElement != 'X') {
+                            electricalcircuit.setTypeElement(TypeNewElement, tappedY, c);
+                        }
 
                         if (TypeNewElement != 'X') {
                             if (x_new_element > tappedX) {
@@ -1022,9 +1026,16 @@ public class WorkActivity extends Activity implements OnClickListener {
                 TextView solvek = (TextView) findViewById(R.id.resolvetext);
                 solve.setImageResource(R.drawable.resolve_first);
                 solvek.setText("Перестроить");
-                Toast.makeText(this, "Схема успешно расчитана", Toast.LENGTH_LONG).show();
+          //      Toast.makeText(this, "Схема успешно расчитана", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
+        //        Toast.makeText(this, R.string.err, Toast.LENGTH_LONG).show();
+            }
+
+            if (problem){
                 Toast.makeText(this, R.string.err, Toast.LENGTH_LONG).show();
+                problem = false;
+            }else{
+                Toast.makeText(this, "Схема успешно расчитана", Toast.LENGTH_LONG).show();
             }
 
         } else {
@@ -1036,17 +1047,31 @@ public class WorkActivity extends Activity implements OnClickListener {
             solvek.setText("Рассчитать");
         }
     }
+
     public class solveSolve extends Thread {
         public void run() {
-            electricalcircuit.solve();
+            try{electricalcircuit.solve();}
+            catch(Exception e){
+                throw new RuntimeException();
+            }
+
         }
     }
+
+    final Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+        public void uncaughtException(Thread th, Throwable ex) {
+            problem = true;
+        }
+    };
+
+    public boolean problem  = false;
 
 
     public void StartSolve() {
         check.setVisibility(View.VISIBLE);
         solveSolve saver = new solveSolve();
         saver.start();
+        saver.setUncaughtExceptionHandler(h);
         try {
             saver.join();
 
@@ -1055,7 +1080,6 @@ public class WorkActivity extends Activity implements OnClickListener {
 
             check.setVisibility(View.INVISIBLE);
         }
-
 
 
     }
@@ -1089,7 +1113,6 @@ public class WorkActivity extends Activity implements OnClickListener {
             Toast toast = Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT);
             check.setVisibility(View.INVISIBLE);
         }
-
 
 
     }
