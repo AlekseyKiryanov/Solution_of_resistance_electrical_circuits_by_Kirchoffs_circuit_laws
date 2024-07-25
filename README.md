@@ -6,5 +6,7 @@ Give resistance and electromotive force.
 Program shows current and voltage.
 Also it's possible to save circuit.
 Version OS: Android 10.
+
 [Installer](/app/release/app-release.apk)
+
 [Screen](/screen1.png)
