@@ -9,4 +9,4 @@ Version OS: Android 10.
 
 [Installer](/app/release/app-release.apk)
 
-[Screen](/screen1.png)
+![Screen](/screen1.png)
